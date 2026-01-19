@@ -1,9 +1,11 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Linkedin, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const [year, setYear] = useState<number>(new Date().getFullYear());
   const quickLinks = [
     { name: 'Home', href: '/' },
     { name: 'Products', href: '/products' },
@@ -11,6 +13,10 @@ const Footer = () => {
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' }
   ];
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
 
   const products = [
     { name: 'Paver Blocks', href: '/products/paver-blocks' },
@@ -120,7 +126,7 @@ const Footer = () => {
       <div className="border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center text-sm">
-            <p>&copy; {new Date().getFullYear()} Royal Paver. All rights reserved.</p>
+            <p>&copy; {year} Royal Paver. All rights reserved.</p>
           </div>
         </div>
       </div>
